@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>:: Portfolio || Muh. Asrul Mulis ::</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="#home">Muh. Asrul Mulis</a>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#portfolio" class="nav-link">Portfolio</a>
+          <a href="#prototypes" class="nav-link">Prototypes</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#contact" class="nav-link">Contact</a>
+          <a href="#blog" class="nav-link">Blog</a>
+          <button class="theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+        <div class="hamburger" id="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">Hi, Saya <span class="highlight">Asrul</span></h1>
+          <p class="hero-subtitle">Teknik Informatika Developer & Designer</p>
+          <p class="hero-description">Passionate developer yang fokus pada pembuatan aplikasi web dan mobile yang inovatif dan user-friendly.</p>
+          <div class="hero-buttons">
+            <a href="#portfolio" class="btn btn-primary">Lihat Portfolio</a>
+            <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
+            <a href="cv/cv.html" class="btn btn-primary" target="_blank">Lihat CV Lengkap</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="image-placeholder">
+            <i class="fas fa-user-circle"></i>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <a href="#about">
+          <i class="fas fa-chevron-down"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2 class="section-title">Tentang Saya</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <div class="stats">
+              <div class="stat-item">
+                <span class="stat-number">0</span>
+                <span class="stat-label">Proyek Selesai</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">2+</span>
+                <span class="stat-label">Tahun Pengalaman</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">Teknologi Dikuasai</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-image">
+            <div class="image-placeholder">
+              <i class="fas fa-code"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+      <div class="container">
+        <h2 class="section-title">Keahlian</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>Frontend</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <span>HTML/CSS</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="90"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span>JavaScript</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span>Java</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="80"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3>Backend</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <span>Spring-Boot</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="75"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span>Java</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="70"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span>Database</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="80"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+        <h2 class="section-title">Portfolio</h2>
+        <div class="portfolio-filters">
+          <button class="filter-btn active" data-filter="all">Semua</button>
+          <button class="filter-btn" data-filter="web">Web</button>
+          <button class="filter-btn" data-filter="mobile">Mobile</button>
+          <button class="filter-btn" data-filter="design">Design</button>
+        </div>
+        <div class="portfolio-grid">
+          <div class="portfolio-item" data-category="web">
+            <div class="portfolio-image">
+              <div class="image-placeholder">
+                <img src="multimedia/img/Absensi.jpeg" alt="" width="580" />
+              </div>
+              <div class="portfolio-overlay">
+                <h3>Absensi Web</h3>
+                <p>Website sederhana yang Mengelola absensi pegawai</p>
+                <div class="portfolio-links">
+                  <a href="multimedia/img/Absensi.jpeg" class="portfolio-link"><i class="fas fa-eye"></i></a>
+                  <a href="#" class="portfolio-link"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-item" data-category="mobile">
+            <div class="portfolio-image">
+              <div class="image-placeholder">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <div class="portfolio-overlay">
+                <h3>Mobile Banking App</h3>
+                <p>Aplikasi mobile banking dengan UI/UX modern</p>
+                <div class="portfolio-links">
+                  <a href="#" class="portfolio-link"><i class="fas fa-eye"></i></a>
+                  <a href="#" class="portfolio-link"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-item" data-category="design">
+            <div class="portfolio-image">
+              <div class="image-placeholder">
+                <video width="500" height="270" controls>
+                  <source src="multimedia/video/VID-20190208-WA0006 (1).mp4" type="video/mp4" />
+                  your browser does not support the video tag.
+                </video>
+              </div>
+              <div class="portfolio-overlay">
+                <h3>video sederhana</h3>
+                <p>hasil edit video sederhana</p>
+                <div class="portfolio-links">
+                  <a href="multimedia/video/VID-20190208-WA0006 (1).mp4" class="portfolio-link"><i class="fas fa-eye"></i></a>
+                  <a href="#" class="portfolio-link"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prototypes Section -->
+    <section id="prototypes" class="prototypes">
+      <div class="container">
+        <h2 class="section-title">Prototypes & Demo</h2>
+        <div class="prototypes-grid">
+          <div class="prototype-item">
+            <div class="prototype-header">
+              <h3>Web Dashboard Perpustakaan</h3>
+              <span class="prototype-type">Web App</span>
+            </div>
+            <div class="prototype-preview">
+              <div class="image-placeholder">
+                <img src="multimedia/img/perpustakaan.jpeg" alt="" width="100%" height="200px" />
+              </div>
+            </div>
+            <div class="prototype-info">
+              <p>Dashboard perpustakan untuk monitoring data peminjman dan pengembalian serta data buku tersedia dengan visualisasi interaktif</p>
+              <div class="prototype-tech">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">Boostrap</span>
+                <span class="tech-tag">Spring-Boot</span>
+              </div>
+              <div class="prototype-links">
+                <a href="#" class="btn btn-sm">Live Demo</a>
+                <a href="#" class="btn btn-sm btn-outline">Source Code</a>
+              </div>
+            </div>
+          </div>
+          <div class="prototype-item">
+            <div class="prototype-header">
+              <h3>Task Management App</h3>
+              <span class="prototype-type">Mobile App</span>
+            </div>
+            <div class="prototype-preview">
+              <div class="image-placeholder">
+                <i class="fas fa-tasks"></i>
+              </div>
+            </div>
+            <div class="prototype-info">
+              <p>Aplikasi manajemen tugas dengan fitur kolaborasi tim dan real-time sync</p>
+              <div class="prototype-tech">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">REST API</span>
+              </div>
+              <div class="prototype-links">
+                <a href="#" class="btn btn-sm">Prototype</a>
+                <a href="#" class="btn btn-sm btn-outline">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+      <div class="container">
+        <h2 class="section-title">Layanan</h2>
+        <div class="services-grid">
+          <div class="service-item">
+            <div class="service-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Web Development</h3>
+            <p>Pembuatan website modern, responsif, dan SEO-friendly dengan teknologi terkini</p>
+          </div>
+          <div class="service-item">
+            <div class="service-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Mobile Development</h3>
+            <p>Pengembangan aplikasi mobile cross-platform dengan performa optimal</p>
+          </div>
+          <div class="service-item">
+            <div class="service-icon">
+              <i class="fas fa-palette"></i>
+            </div>
+            <h3>UI/UX Design</h3>
+            <p>Desain antarmuka yang menarik dan pengalaman pengguna yang intuitif</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">Hubungi Saya</h2>
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Email</h4>
+                <p>asrul@email.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Telepon</h4>
+                <p>+62 812-3456-7890</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Lokasi</h4>
+                <p>Jakarta, Indonesia</p>
+              </div>
+            </div>
+          </div>
+          <form class="contact-form" id="contact-form">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Nama Lengkap" required />
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Email" required />
+            </div>
+            <div class="form-group">
+              <input type="text" name="subject" placeholder="Subjek" required />
+            </div>
+            <div class="form-group">
+              <textarea name="message" placeholder="Pesan" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="file-upload" class="file-upload-label">
+                <i class="fas fa-upload"></i>
+                Upload File (Opsional)
+              </label>
+              <input type="file" id="file-upload" name="file" accept=".pdf,.doc,.docx,.jpg,.png" />
+              <div class="file-info" id="file-info"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+      <div class="container">
+        <h2 class="section-title">Blog & Tutorial</h2>
+        <div class="blog-grid">
+          <article class="blog-item">
+            <div class="blog-image">
+              <div class="image-placeholder">
+                <i class="fas fa-newspaper"></i>
+              </div>
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span class="blog-date">15 Nov 2024</span>
+                <span class="blog-category">Tutorial</span>
+              </div>
+              <h3>Cara Membuat Website Responsif dengan CSS Grid</h3>
+              <p>Pelajari teknik modern untuk membuat layout website yang responsif menggunakan CSS Grid...</p>
+              <a href="#" class="blog-link">Baca Selengkapnya</a>
+            </div>
+          </article>
+          <article class="blog-item">
+            <div class="blog-image">
+              <div class="image-placeholder">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span class="blog-date">10 Nov 2024</span>
+                <span class="blog-category">Tips</span>
+              </div>
+              <h3>10 Tips Optimasi Performance JavaScript</h3>
+              <p>Tips dan trik untuk meningkatkan performa aplikasi JavaScript Anda...</p>
+              <a href="#" class="blog-link">Baca Selengkapnya</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Muh. Asrul Mulis</h3>
+            <p>Passionate developer yang selalu siap untuk tantangan baru dan proyek-proyek menarik.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#">Web Development</a></li>
+              <li><a href="#">Mobile Development</a></li>
+              <li><a href="#">UI/UX Design</a></li>
+              <li><a href="#">Consulting</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Muh. Asrul Mulis. Mahasiswa Teknik Informatika.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
