@@ -22,9 +22,8 @@ This repository showcases my personal portfolio built with love using HTML, CSS,
 ---
 
 ## 🌐 Live Demo
-```bash
+
 🔗 [View Website](https://arulvscode.github.io/portofolio/)  
-```
 
 ---
 
@@ -63,12 +62,11 @@ portofolio/
 ---
 
 ## 📸 Screenshots
-```bash
+
 | Home Page |   CV Page   |
 |-----------|-------------|
 | ![Home](images/screenshot-home.png) | ![About](images/screenshot-about.png) |
 
-```
 
 ---
 
@@ -85,7 +83,7 @@ portofolio/
 
 📧 Email: 👉 muhasrulmulis@gmail.com  
 🌐 Website/Portfolio: 👉 demo nya ada di atas  
-💼 LinkedIn: 👉 https://www.linkedin.com/in/muh-asrul-mulis-a219962a1/
+💼 LinkedIn: 👉 https://www.linkedin.com/in/muh-asrul-mulis-a219962a1/   
 📷 Instagram (optional): 👉 https://www.instagram.com/muhasrulmulis/
 
 ---
