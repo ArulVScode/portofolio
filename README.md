@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/ArulVScode/portofolio/blob/main/images/logo.png" width="100" alt="Logo" />
+  <img src="https://raw.githubusercontent.com/ArulVScode/portofolio/main/images/logo.png" width="100" alt="Logo" style="filter: brightness(1.8);" />
 </p>
 
 <h1 align="center">Portofolio Web</h1>
@@ -65,7 +65,7 @@ portofolio/
 
 | Home Page |   CV Page   |
 |-----------|-------------|
-| ![Home](images/screenshot-home.png) | ![About](images/screenshot-about.png) |
+| ![Home](images/portofolio.png) | ![About](images/about.png) |
 
 
 ---
