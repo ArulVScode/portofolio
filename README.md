@@ -22,9 +22,9 @@ This repository showcases my personal portfolio built with love using HTML, CSS,
 ---
 
 ## 🌐 Live Demo
-
+```bash
 🔗 [View Website](https://arulvscode.github.io/portofolio/)  
-👉 *Ganti link di atas dengan URL GitHub Pages kamu jika berbeda*
+```
 
 ---
 
@@ -40,6 +40,7 @@ portofolio/
 ├── js/
 │   └── script.js
 └── images/
+```
 
 ---
 
@@ -62,12 +63,12 @@ portofolio/
 ---
 
 ## 📸 Screenshots
-
+```bash
 | Home Page |   CV Page   |
 |-----------|-------------|
 | ![Home](images/screenshot-home.png) | ![About](images/screenshot-about.png) |
 
-👉 *Upload screenshot ke folder `images/` dan sesuaikan nama filenya jika beda.*
+```
 
 ---
 
