@@ -13,9 +13,9 @@
 
 ---
 
-# 🚀 [Muh. Asrul Mulis] | Web Developer & UI/UX Enthusiast
+# 🚀 Muh. Asrul Mulis | Web Developer & UI/UX Enthusiast
 
-Hi, I’m **[ArulVSCode]** 👋  
+Hi, I’m **ArulVSCode** 👋  
 A passionate web developer focused on creating clean, responsive, and functional websites.  
 This repository showcases my personal portfolio built with love using HTML, CSS, JavaScript, and more.
 
