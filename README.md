@@ -30,14 +30,15 @@ This repository showcases my personal portfolio built with love using HTML, CSS,
 
 ## 📁 Project Structure
 
+```bash
 portofolio/
 ├── index.html
 ├── about.html
 ├── contact.html
 ├── css/
-│ └── style.css
+│   └── style.css
 ├── js/
-│ └── script.js
+│   └── script.js
 └── images/
 
 ---
