@@ -22,6 +22,7 @@
           <a href="#portfolio" class="nav-link">Portfolio</a>
           <a href="#prototypes" class="nav-link">Prototypes</a>
           <a href="#services" class="nav-link">Services</a>
+          <a href="todolist/notes.html" class="nav-link" target="_blank">Notes</a>
           <a href="#contact" class="nav-link">Contact</a>
           <a href="#blog" class="nav-link">Blog</a>
           <button class="theme-toggle" id="theme-toggle">
@@ -46,7 +47,7 @@
           <div class="hero-buttons">
             <a href="#portfolio" class="btn btn-primary">Lihat Portfolio</a>
             <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
-            <a href="cv/cv.html" class="btn btn-primary">Lihat CV Lengkap</a>
+            <a href="cv/cv.html" class="btn btn-primary" target="_blank">Lihat CV Lengkap</a>
           </div>
         </div>
         <div class="hero-image">
@@ -156,6 +157,8 @@
           <button class="filter-btn" data-filter="web">Web</button>
           <button class="filter-btn" data-filter="mobile">Mobile</button>
           <button class="filter-btn" data-filter="design">Design</button>
+          <button class="filter-btn" data-filter="calculator">calculator</button>
+          <button class="filter-btn" data-filter="weather">weather</button>
         </div>
         <div class="portfolio-grid">
           <div class="portfolio-item" data-category="web">
@@ -188,6 +191,21 @@
               </div>
             </div>
           </div>
+          <div class="portfolio-item" data-category="web">
+            <div class="portfolio-image">
+              <div class="image-placeholder">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <div class="portfolio-overlay">
+                <h3>Resume Builder</h3>
+                <p>Aplikasi pembuat CV dengan preview real-time dan fitur cetak PDF</p>
+                <div class="portfolio-links">
+                  <a href="todolist/resumeBuilder.html" class="portfolio-link" target="_blank"><i class="fas fa-eye"></i></a>
+                  <a href="#" class="portfolio-link" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="portfolio-item" data-category="design">
             <div class="portfolio-image">
               <div class="image-placeholder">
@@ -202,6 +220,36 @@
                 <div class="portfolio-links">
                   <a href="multimedia/video/VID-20190208-WA0006 (1).mp4" class="portfolio-link"><i class="fas fa-eye"></i></a>
                   <a href="#" class="portfolio-link"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-item" data-category="calculator">
+            <div class="portfolio-image">
+              <div class="image-placeholder">
+                <i class="fas fa-calculator"></i>
+              </div>
+              <div class="portfolio-overlay">
+                <h3>Calculator</h3>
+                <p>Aplikasi perhitungan berbasis web</p>
+                <div class="portfolio-links">
+                  <a href="todolist/calculator.html" class="portfolio-link" target="_blank"><i class="fas fa-eye"></i></a>
+                  <a href="#" class="portfolio-link" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-item" data-category="weather">
+            <div class="portfolio-image">
+              <div class="image-placeholder">
+                <i class="fa-solid fa-cloud"></i>
+              </div>
+              <div class="portfolio-overlay">
+                <h3>Weather Dashboard</h3>
+                <p>Dashboard cuaca dengan fitur pencarian lokasi, suhu, kelembaban, dan prakiraan.</p>
+                <div class="portfolio-links">
+                  <a href="todolist/weather.html" class="portfolio-link" target="_blank"><i class="fas fa-eye"></i></a>
+                  <a href="#" class="portfolio-link" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
               </div>
             </div>
@@ -258,6 +306,52 @@
               <div class="prototype-links">
                 <a href="#" class="btn btn-sm">Prototype</a>
                 <a href="#" class="btn btn-sm btn-outline">GitHub</a>
+              </div>
+            </div>
+          </div>
+          <div class="prototype-item">
+            <div class="prototype-header">
+              <h3>ToDo List Manager</h3>
+              <span class="prototype-type">Web App</span>
+            </div>
+            <div class="prototype-preview">
+              <div class="image-placeholder">
+                <i class="fa-solid fa-list"></i>
+              </div>
+            </div>
+            <div class="prototype-info">
+              <p>ToDo list sederhana dengan fitur tambah, hapus, filter, dan penyimpanan di browser (localStorage).</p>
+              <div class="prototype-tech">
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">JavaScript</span>
+              </div>
+              <div class="prototype-links">
+                <a href="todolist/manager.html" class="btn btn-sm" target="_blank">Live Demo</a>
+                <a href="#" class="btn btn-sm btn-outline" target="_blank">GitHub</a>
+              </div>
+            </div>
+          </div>
+          <div class="prototype-item">
+            <div class="prototype-header">
+              <h3>Expense Tracker App</h3>
+              <span class="prototype-type">Web App</span>
+            </div>
+            <div class="prototype-preview">
+              <div class="image-placeholder">
+                <i class="fas fa-chart-line"></i>
+              </div>
+            </div>
+            <div class="prototype-info">
+              <p>Aplikasi pelacak keuangan pribadi sederhana untuk mencatat pengeluaran dan pemasukan harian.</p>
+              <div class="prototype-tech">
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">JavaScript</span>
+              </div>
+              <div class="prototype-links">
+                <a href="todolist/expense.html" class="btn btn-sm" target="_blank">Live Demo</a>
+                <a href="#" class="btn btn-sm btn-outline" target="_blank">GitHub</a>
               </div>
             </div>
           </div>
@@ -430,7 +524,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>&copy; 2025 Muh. Asrul Mulis_221011450021. Mahasiswa Teknik Informatika.</p>
+          <p>&copy; 2024 Muh. Asrul Mulis. Mahasiswa Teknik Informatika.</p>
         </div>
       </div>
     </footer>
