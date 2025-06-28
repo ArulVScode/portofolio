@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>:: Notes || Muh. Asrul Mulis ::</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #2c3e50;
+        --accent-color: #e74c3c;
+        --text-color: #333;
+        --text-light: #666;
+        --bg-color: #f8f9fa;
+        --white: #ffffff;
+        --border-color: #dee2e6;
+        --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --radius: 8px;
+        --transition: all 0.3s ease;
+      }
+
+      [data-theme="dark"] {
+        --primary-color: #3498db;
+        --secondary-color: #34495e;
+        --accent-color: #e74c3c;
+        --text-color: #ecf0f1;
+        --text-light: #bdc3c7;
+        --bg-color: #2c3e50;
+        --white: #34495e;
+        --border-color: #4a5568;
+        --shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        transition: var(--transition);
+      }
+
+      .header {
+        background: var(--white);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--shadow);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .back-btn {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: var(--radius);
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: var(--transition);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .back-btn:hover {
+        background: #2980b9;
+        transform: translateY(-2px);
+      }
+
+      .theme-btn {
+        background: var(--bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        color: var(--text-color);
+      }
+
+      .theme-btn:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: scale(1.1);
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 2rem;
+        padding: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        min-height: calc(100vh - 100px);
+      }
+
+      .sidebar {
+        background: var(--white);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        height: fit-content;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+      }
+
+      .search-box {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius);
+        margin-bottom: 1rem;
+        background: var(--bg-color);
+        color: var(--text-color);
+        font-size: 0.9rem;
+        transition: var(--transition);
+      }
+
+      .search-box:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+      }
+
+      .add-btn {
+        width: 100%;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: var(--radius);
+        padding: 0.75rem;
+        cursor: pointer;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .add-btn:hover {
+        background: #2980b9;
+        transform: translateY(-2px);
+      }
+
+      .note-item {
+        background: var(--bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius);
+        padding: 1rem;
+        margin-bottom: 0.75rem;
+        cursor: pointer;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .note-item:hover {
+        border-color: var(--primary-color);
+        transform: translateX(5px);
+        box-shadow: var(--shadow);
+      }
+
+      .note-item.active {
+        border-color: var(--primary-color);
+        background: rgba(52, 152, 219, 0.1);
+        transform: translateX(5px);
+      }
+
+      .note-title {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--text-color);
+        font-size: 1rem;
+      }
+
+      .note-preview {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
+      }
+
+      .note-date {
+        font-size: 0.75rem;
+        color: var(--text-light);
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .main-content {
+        background: var(--white);
+        border-radius: var(--radius);
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+      }
+
+      .welcome {
+        text-align: center;
+        color: var(--text-light);
+        padding: 4rem 2rem;
+      }
+
+      .welcome i {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        opacity: 0.3;
+        color: var(--primary-color);
+      }
+
+      .welcome h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--text-color);
+      }
+
+      .editor {
+        display: none;
+      }
+
+      .editor.active {
+        display: block;
+      }
+
+      .editor-header {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border-color);
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 0.6rem 1.2rem;
+        border: none;
+        border-radius: var(--radius);
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-primary {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #2980b9;
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background: var(--bg-color);
+        border: 1px solid var(--border-color);
+        color: var(--text-color);
+      }
+
+      .btn-secondary:hover {
+        background: var(--border-color);
+      }
+
+      .btn-danger {
+        background: var(--accent-color);
+        color: white;
+      }
+
+      .btn-danger:hover {
+        background: #c0392b;
+        transform: translateY(-2px);
+      }
+
+      .title-input {
+        width: 100%;
+        font-size: 1.8rem;
+        font-weight: 600;
+        border: none;
+        background: transparent;
+        padding: 0.75rem 0;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid var(--border-color);
+        color: var(--text-color);
+        transition: var(--transition);
+      }
+
+      .title-input:focus {
+        outline: none;
+        border-bottom-color: var(--primary-color);
+      }
+
+      .content-input {
+        width: 100%;
+        min-height: 400px;
+        border: none;
+        background: transparent;
+        resize: vertical;
+        font-family: inherit;
+        line-height: 1.6;
+        font-size: 1rem;
+        color: var(--text-color);
+        padding: 1rem 0;
+      }
+
+      .content-input:focus {
+        outline: none;
+      }
+
+      .toast {
+        position: fixed;
+        top: 120px;
+        right: 2rem;
+        background: var(--primary-color);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: var(--radius);
+        transform: translateX(400px);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        box-shadow: var(--shadow);
+        font-weight: 500;
+      }
+
+      .toast.show {
+        transform: translateX(0);
+      }
+
+      .delete-btn {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+        opacity: 0;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .delete-btn:hover {
+        background: #c0392b;
+        transform: scale(1.1);
+      }
+
+      .note-item:hover .delete-btn {
+        opacity: 1;
+      }
+
+      .stats {
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background: var(--bg-color);
+        border-radius: var(--radius);
+        text-align: center;
+      }
+
+      .stats span {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      .stats small {
+        color: var(--text-light);
+        font-size: 0.8rem;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          grid-template-columns: 1fr;
+          padding: 1rem;
+          gap: 1rem;
+        }
+
+        .header {
+          padding: 1rem;
+        }
+
+        .header-actions {
+          gap: 0.5rem;
+        }
+
+        .back-btn {
+          padding: 0.4rem 0.8rem;
+          font-size: 0.8rem;
+        }
+
+        .editor-header {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .btn {
+          justify-content: center;
+        }
+
+        .title-input {
+          font-size: 1.4rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo">
+        <i class="fas fa-sticky-note"></i>
+        My Notes
+      </div>
+      <div class="header-actions">
+        <a href="../index.html" class="back-btn">
+          <i class="fas fa-arrow-left"></i>
+          Kembali ke Portfolio
+        </a>
+        <button class="theme-btn" onclick="toggleTheme()">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="sidebar">
+        <div class="stats">
+          <span id="notesCount">0</span>
+          <small>Total Catatan</small>
+        </div>
+
+        <input type="text" class="search-box" placeholder="🔍 Cari catatan..." oninput="searchNotes(this.value)" />
+
+        <button class="add-btn" onclick="createNote()">
+          <i class="fas fa-plus"></i>
+          Tambah Catatan Baru
+        </button>
+
+        <div id="notesList"></div>
+      </div>
+
+      <div class="main-content">
+        <div class="welcome" id="welcomeScreen">
+          <i class="fas fa-edit"></i>
+          <h2>Selamat Datang di My Notes</h2>
+          <p>Aplikasi catatan sederhana untuk menyimpan ide dan pemikiran Anda.</p>
+          <p style="margin-top: 1rem; font-size: 0.9rem">Pilih catatan dari sidebar atau buat catatan baru untuk memulai.</p>
+        </div>
+
+        <div class="editor" id="editor">
+          <div class="editor-header">
+            <button class="btn btn-primary" onclick="saveNote()"><i class="fas fa-save"></i> Simpan Catatan</button>
+            <button class="btn btn-secondary" onclick="cancelEdit()"><i class="fas fa-times"></i> Batal</button>
+            <button class="btn btn-danger" id="deleteBtn" onclick="deleteCurrentNote()" style="display: none"><i class="fas fa-trash"></i> Hapus Catatan</button>
+          </div>
+
+          <input type="text" class="title-input" id="titleInput" placeholder="Masukkan judul catatan..." />
+
+          <textarea
+            class="content-input"
+            id="contentInput"
+            placeholder="Tulis catatan Anda di sini...
+
+Tips: 
+• Gunakan enter untuk membuat paragraf baru
+• Catatan akan otomatis tersimpan di browser Anda
+• Anda dapat mencari catatan menggunakan kotak pencarian"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast">
+      <span id="toastMsg">Pesan</span>
+    </div>
+
+    <script>
+      let notes = JSON.parse(localStorage.getItem("notes")) || [];
+      let currentNoteId = null;
+      let isEditing = false;
+
+      function saveNotes() {
+        localStorage.setItem("notes", JSON.stringify(notes));
+        updateNotesCount();
+      }
+
+      function updateNotesCount() {
+        document.getElementById("notesCount").textContent = notes.length;
+      }
+
+      function generateId() {
+        return Date.now().toString(36) + Math.random().toString(36).substr(2);
+      }
+
+      function createNote() {
+        currentNoteId = generateId();
+        isEditing = true;
+        showEditor();
+        document.getElementById("titleInput").value = "";
+        document.getElementById("contentInput").value = "";
+        document.getElementById("deleteBtn").style.display = "none";
+        document.getElementById("titleInput").focus();
+      }
+
+      function saveNote() {
+        const title = document.getElementById("titleInput").value.trim();
+        const content = document.getElementById("contentInput").value.trim();
+
+        if (!title && !content) {
+          showToast("❌ Catatan tidak boleh kosong!");
+          return;
+        }
+
+        const noteIndex = notes.findIndex((note) => note.id === currentNoteId);
+        const now = new Date().toISOString();
+
+        if (noteIndex >= 0) {
+          notes[noteIndex] = {
+            ...notes[noteIndex],
+            title: title || "Catatan Tanpa Judul",
+            content: content,
+            updatedAt: now,
+          };
+        } else {
+          notes.unshift({
+            id: currentNoteId,
+            title: title || "Catatan Tanpa Judul",
+            content: content,
+            createdAt: now,
+            updatedAt: now,
+          });
+        }
+
+        saveNotes();
+        renderNotes();
+        showToast("✅ Catatan berhasil disimpan!");
+      }
+
+      function editNote(id) {
+        const note = notes.find((n) => n.id === id);
+        if (!note) return;
+
+        currentNoteId = id;
+        isEditing = true;
+        showEditor();
+        document.getElementById("titleInput").value = note.title;
+        document.getElementById("contentInput").value = note.content;
+        document.getElementById("deleteBtn").style.display = "block";
+
+        // Update active state
+        renderNotes();
+      }
+
+      function deleteNote(id, event) {
+        event.stopPropagation();
+        if (confirm("⚠️ Yakin ingin menghapus catatan ini?")) {
+          notes = notes.filter((note) => note.id !== id);
+          saveNotes();
+          renderNotes();
+          if (currentNoteId === id) {
+            showWelcome();
+          }
+          showToast("🗑️ Catatan berhasil dihapus!");
+        }
+      }
+
+      function deleteCurrentNote() {
+        if (currentNoteId && confirm("⚠️ Yakin ingin menghapus catatan ini?")) {
+          notes = notes.filter((note) => note.id !== currentNoteId);
+          saveNotes();
+          renderNotes();
+          showWelcome();
+          showToast("🗑️ Catatan berhasil dihapus!");
+        }
+      }
+
+      function cancelEdit() {
+        showWelcome();
+      }
+
+      function searchNotes(query) {
+        const filtered = notes.filter((note) => note.title.toLowerCase().includes(query.toLowerCase()) || note.content.toLowerCase().includes(query.toLowerCase()));
+        renderNotes(filtered);
+      }
+
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffTime = Math.abs(now - date);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays === 1) return "Hari ini";
+        if (diffDays === 2) return "Kemarin";
+        if (diffDays <= 7) return `${diffDays - 1} hari lalu`;
+
+        return date.toLocaleDateString("id-ID", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        });
+      }
+
+      function renderNotes(notesToRender = notes) {
+        const notesList = document.getElementById("notesList");
+
+        if (notesToRender.length === 0) {
+          notesList.innerHTML = `
+            <div style="text-align:center;color:var(--text-light);padding:2rem;">
+              <i class="fas fa-inbox" style="font-size:2rem;margin-bottom:1rem;opacity:0.5;"></i>
+              <p>Belum ada catatan</p>
+              <small>Klik tombol "Tambah Catatan Baru" untuk memulai</small>
+            </div>
+          `;
+          return;
+        }
+
+        notesList.innerHTML = notesToRender
+          .map((note) => {
+            const date = formatDate(note.createdAt);
+            const preview = note.content.slice(0, 80) + (note.content.length > 80 ? "..." : "");
+            const isActive = note.id === currentNoteId ? "active" : "";
+
+            return `
+              <div class="note-item ${isActive}" onclick="editNote('${note.id}')" style="position:relative;">
+                <button class="delete-btn" onclick="deleteNote('${note.id}', event)" title="Hapus catatan">
+                  <i class="fas fa-trash"></i>
+                </button>
+                <div class="note-title">${note.title}</div>
+                <div class="note-preview">${preview}</div>
+                <div class="note-date">
+                  <i class="fas fa-calendar-alt"></i>
+                  ${date}
+                </div>
+              </div>
+            `;
+          })
+          .join("");
+      }
+
+      function showEditor() {
+        document.getElementById("welcomeScreen").style.display = "none";
+        document.getElementById("editor").classList.add("active");
+      }
+
+      function showWelcome() {
+        document.getElementById("welcomeScreen").style.display = "block";
+        document.getElementById("editor").classList.remove("active");
+        currentNoteId = null;
+        isEditing = false;
+        renderNotes(); // Reset active state
+      }
+
+      function showToast(message) {
+        const toast = document.getElementById("toast");
+        const toastMsg = document.getElementById("toastMsg");
+        toastMsg.textContent = message;
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 3000);
+      }
+
+      function toggleTheme() {
+        const current = document.documentElement.getAttribute("data-theme");
+        const newTheme = current === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        document.getElementById("themeIcon").className = newTheme === "dark" ? "fas fa-sun" : "fas fa-moon";
+        localStorage.setItem("theme", newTheme);
+      }
+
+      // Auto-save functionality
+      let autoSaveTimeout;
+      function setupAutoSave() {
+        const titleInput = document.getElementById("titleInput");
+        const contentInput = document.getElementById("contentInput");
+
+        [titleInput, contentInput].forEach((input) => {
+          input.addEventListener("input", () => {
+            if (isEditing) {
+              clearTimeout(autoSaveTimeout);
+              autoSaveTimeout = setTimeout(() => {
+                const title = titleInput.value.trim();
+                const content = contentInput.value.trim();
+                if (title || content) {
+                  saveNote();
+                }
+              }, 2000); // Auto-save after 2 seconds of inactivity
+            }
+          });
+        });
+      }
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedTheme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+        document.getElementById("themeIcon").className = savedTheme === "dark" ? "fas fa-sun" : "fas fa-moon";
+
+        renderNotes();
+        updateNotesCount();
+        setupAutoSave();
+
+        // Welcome message for first-time users
+        if (notes.length === 0) {
+          setTimeout(() => {
+            showToast("👋 Selamat datang! Mulai dengan membuat catatan pertama Anda.");
+          }, 1000);
+        }
+      });
+
+      // Keyboard shortcuts
+      document.addEventListener("keydown", (e) => {
+        // Ctrl+N for new note
+        if (e.ctrlKey && e.key === "n") {
+          e.preventDefault();
+          createNote();
+        }
+
+        // Ctrl+S for save
+        if (e.ctrlKey && e.key === "s" && isEditing) {
+          e.preventDefault();
+          saveNote();
+        }
+
+        // Escape to cancel editing
+        if (e.key === "Escape" && isEditing) {
+          cancelEdit();
+        }
+      });
+    </script>
+  </body>
+</html>

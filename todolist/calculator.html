@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>:: Calculator || Portfolio ::</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .calculator {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border-radius: 25px;
+        padding: 30px;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .header h1 {
+        color: white;
+        font-size: 1.8rem;
+        margin-bottom: 5px;
+      }
+
+      .header p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+      }
+
+      .display {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+        min-height: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .display-history {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+        min-height: 20px;
+        text-align: right;
+      }
+
+      .display-current {
+        color: white;
+        font-size: 2rem;
+        font-weight: 300;
+        text-align: right;
+        word-wrap: break-word;
+      }
+
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+      }
+
+      .btn {
+        height: 60px;
+        border: none;
+        border-radius: 15px;
+        font-size: 1.2rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn:active {
+        transform: translateY(0);
+      }
+
+      .btn-number {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+      }
+
+      .btn-operator {
+        background: linear-gradient(135deg, #ff6b6b, #ff5252);
+        color: white;
+      }
+
+      .btn-function {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        font-size: 1rem;
+      }
+
+      .btn-equals {
+        background: linear-gradient(135deg, #4ecdc4, #44a08d);
+        color: white;
+        grid-column: span 2;
+      }
+
+      .btn-zero {
+        grid-column: span 2;
+      }
+
+      .btn-clear {
+        background: linear-gradient(135deg, #ffa726, #ff9800);
+        color: white;
+      }
+
+      .memory-section {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+      }
+
+      .memory-btn {
+        flex: 1;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .memory-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .history-panel {
+        margin-top: 20px;
+        max-height: 150px;
+        overflow-y: auto;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      .history-item {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+        padding: 5px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .history-item:last-child {
+        border-bottom: none;
+      }
+
+      .mode-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .mode-toggle:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="header">
+        <h1><i class="fas fa-calculator"></i> Calculator Pro</h1>
+        <p>Advanced Scientific Calculator</p>
+      </div>
+
+      <div class="display">
+        <div class="display-history" id="history"></div>
+        <div class="display-current" id="display">0</div>
+      </div>
+
+      <div class="buttons">
+        <button class="btn btn-function" onclick="clearAll()">AC</button>
+        <button class="btn btn-function" onclick="clearEntry()">CE</button>
+        <button class="btn btn-function" onclick="deleteLast()">⌫</button>
+        <button class="btn btn-operator" onclick="appendOperator('/')">÷</button>
+
+        <button class="btn btn-function" onclick="appendFunction('sin(')">sin</button>
+        <button class="btn btn-function" onclick="appendFunction('cos(')">cos</button>
+        <button class="btn btn-function" onclick="appendFunction('tan(')">tan</button>
+        <button class="btn btn-operator" onclick="appendOperator('*')">×</button>
+
+        <button class="btn btn-function" onclick="appendFunction('log(')">log</button>
+        <button class="btn btn-function" onclick="appendFunction('ln(')">ln</button>
+        <button class="btn btn-function" onclick="appendOperator('^')">x²</button>
+        <button class="btn btn-operator" onclick="appendOperator('-')">−</button>
+
+        <button class="btn btn-function" onclick="appendFunction('sqrt(')">√</button>
+        <button class="btn btn-number" onclick="appendNumber('(')">(</button>
+        <button class="btn btn-number" onclick="appendNumber(')')">)</button>
+        <button class="btn btn-operator" onclick="appendOperator('+')">+</button>
+
+        <button class="btn btn-number" onclick="appendNumber('7')">7</button>
+        <button class="btn btn-number" onclick="appendNumber('8')">8</button>
+        <button class="btn btn-number" onclick="appendNumber('9')">9</button>
+        <button class="btn btn-function" onclick="appendNumber('π')">π</button>
+
+        <button class="btn btn-number" onclick="appendNumber('4')">4</button>
+        <button class="btn btn-number" onclick="appendNumber('5')">5</button>
+        <button class="btn btn-number" onclick="appendNumber('6')">6</button>
+        <button class="btn btn-function" onclick="appendNumber('e')">e</button>
+
+        <button class="btn btn-number" onclick="appendNumber('1')">1</button>
+        <button class="btn btn-number" onclick="appendNumber('2')">2</button>
+        <button class="btn btn-number" onclick="appendNumber('3')">3</button>
+        <button class="btn btn-function" onclick="toggleSign()">±</button>
+
+        <button class="btn btn-number btn-zero" onclick="appendNumber('0')">0</button>
+        <button class="btn btn-number" onclick="appendNumber('.')">.</button>
+        <button class="btn btn-equals" onclick="calculate()">=</button>
+      </div>
+
+      <div class="memory-section">
+        <button class="memory-btn" onclick="memoryClear()">MC</button>
+        <button class="memory-btn" onclick="memoryRecall()">MR</button>
+        <button class="memory-btn" onclick="memoryAdd()">M+</button>
+        <button class="memory-btn" onclick="memorySubtract()">M−</button>
+      </div>
+
+      <div class="history-panel" id="historyPanel">
+        <div style="color: rgba(255, 255, 255, 0.6); text-align: center; font-size: 0.8rem">History will appear here</div>
+      </div>
+    </div>
+
+    <script>
+      let currentInput = "0";
+      let operator = "";
+      let previousInput = "";
+      let memory = 0;
+      let history = [];
+
+      const display = document.getElementById("display");
+      const historyDisplay = document.getElementById("history");
+      const historyPanel = document.getElementById("historyPanel");
+
+      function updateDisplay() {
+        display.textContent = currentInput;
+        if (previousInput && operator) {
+          historyDisplay.textContent = `${previousInput} ${operator}`;
+        } else {
+          historyDisplay.textContent = "";
+        }
+      }
+
+      function appendNumber(num) {
+        if (num === "π") {
+          currentInput = Math.PI.toString();
+        } else if (num === "e") {
+          currentInput = Math.E.toString();
+        } else if (currentInput === "0" && num !== ".") {
+          currentInput = num;
+        } else {
+          currentInput += num;
+        }
+        updateDisplay();
+      }
+
+      function appendOperator(op) {
+        if (previousInput && operator && currentInput !== "") {
+          calculate();
+        }
+
+        operator = op;
+        previousInput = currentInput;
+        currentInput = "";
+        updateDisplay();
+      }
+
+      function appendFunction(func) {
+        if (currentInput === "0") {
+          currentInput = func;
+        } else {
+          currentInput += func;
+        }
+        updateDisplay();
+      }
+
+      function calculate() {
+        if (!operator || !previousInput || currentInput === "") return;
+
+        const expression = `${previousInput} ${operator} ${currentInput}`;
+
+        try {
+          let result;
+          const prev = parseFloat(previousInput);
+          const curr = parseFloat(currentInput);
+
+          switch (operator) {
+            case "+":
+              result = prev + curr;
+              break;
+            case "-":
+              result = prev - curr;
+              break;
+            case "*":
+              result = prev * curr;
+              break;
+            case "/":
+              result = prev / curr;
+              break;
+            case "^":
+              result = Math.pow(prev, curr);
+              break;
+            default:
+              return;
+          }
+
+          // Handle scientific functions
+          const fullExpression = previousInput + operator + currentInput;
+          result = evaluateScientific(fullExpression);
+
+          addToHistory(`${expression} = ${result}`);
+
+          currentInput = result.toString();
+          operator = "";
+          previousInput = "";
+        } catch (error) {
+          currentInput = "Error";
+        }
+
+        updateDisplay();
+      }
+
+      function evaluateScientific(expression) {
+        // Replace common functions
+        expression = expression.replace(/sin\(/g, "Math.sin(");
+        expression = expression.replace(/cos\(/g, "Math.cos(");
+        expression = expression.replace(/tan\(/g, "Math.tan(");
+        expression = expression.replace(/log\(/g, "Math.log10(");
+        expression = expression.replace(/ln\(/g, "Math.log(");
+        expression = expression.replace(/sqrt\(/g, "Math.sqrt(");
+        expression = expression.replace(/π/g, "Math.PI");
+        expression = expression.replace(/e/g, "Math.E");
+        expression = expression.replace(/\^/g, "**");
+
+        try {
+          return eval(expression);
+        } catch (error) {
+          throw new Error("Invalid expression");
+        }
+      }
+
+      function clearAll() {
+        currentInput = "0";
+        operator = "";
+        previousInput = "";
+        updateDisplay();
+      }
+
+      function clearEntry() {
+        currentInput = "0";
+        updateDisplay();
+      }
+
+      function deleteLast() {
+        if (currentInput.length > 1) {
+          currentInput = currentInput.slice(0, -1);
+        } else {
+          currentInput = "0";
+        }
+        updateDisplay();
+      }
+
+      function toggleSign() {
+        if (currentInput !== "0") {
+          currentInput = currentInput.startsWith("-") ? currentInput.substring(1) : "-" + currentInput;
+        }
+        updateDisplay();
+      }
+
+      function memoryClear() {
+        memory = 0;
+      }
+
+      function memoryRecall() {
+        currentInput = memory.toString();
+        updateDisplay();
+      }
+
+      function memoryAdd() {
+        memory += parseFloat(currentInput) || 0;
+      }
+
+      function memorySubtract() {
+        memory -= parseFloat(currentInput) || 0;
+      }
+
+      function addToHistory(calculation) {
+        history.unshift(calculation);
+        if (history.length > 10) {
+          history = history.slice(0, 10);
+        }
+        updateHistoryPanel();
+      }
+
+      function updateHistoryPanel() {
+        if (history.length === 0) {
+          historyPanel.innerHTML = '<div style="color: rgba(255,255,255,0.6); text-align: center; font-size: 0.8rem;">History will appear here</div>';
+          return;
+        }
+
+        historyPanel.innerHTML = history.map((item) => `<div class="history-item">${item}</div>`).join("");
+      }
+
+      // Keyboard support
+      document.addEventListener("keydown", (e) => {
+        if (e.key >= "0" && e.key <= "9") {
+          appendNumber(e.key);
+        } else if (e.key === ".") {
+          appendNumber(".");
+        } else if (e.key === "+") {
+          appendOperator("+");
+        } else if (e.key === "-") {
+          appendOperator("-");
+        } else if (e.key === "*") {
+          appendOperator("*");
+        } else if (e.key === "/") {
+          e.preventDefault();
+          appendOperator("/");
+        } else if (e.key === "Enter" || e.key === "=") {
+          calculate();
+        } else if (e.key === "Escape") {
+          clearAll();
+        } else if (e.key === "Backspace") {
+          deleteLast();
+        }
+      });
+
+      updateDisplay();
+    </script>
+  </body>
+</html>
